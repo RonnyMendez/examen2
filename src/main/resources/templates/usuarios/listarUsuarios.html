@@ -2,8 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 
-    <head th:include="fragments/head :: headerFragment">
-        <title id="pageTitle">Usuarios</title>
+    <head th:insert="~{fragments/head :: headerFragment (pageTitle='Usuarios')}">
         <!-- other elements you want to reference in your layout -->
     </head>
 
@@ -13,7 +12,7 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
 
-    <ul th:replace="fragments/sidebar :: sidebar"></ul>
+    <ul th:replace="~{fragments/sidebar :: sidebar}"></ul>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -22,7 +21,7 @@
         <div id="content">
 
             <!-- Topbar -->
-            <ul th:replace="fragments/navbar :: navbar"></ul>
+            <ul th:replace="~{fragments/navbar :: navbar}"></ul>
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
@@ -34,8 +33,9 @@
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
-                    <div class="card-header py-3">
+                    <div class="card-header py-3 d-flex justify-content-between align-items-center">
                         <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                         <button type="button" class="btn btn-primary" id="createButton">Crear</button>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -61,7 +61,7 @@
         </div>
         <!-- End of Main Content -->
         <!-- Footer -->
-        <footer th:replace="fragments/footer :: footer"></footer>
+        <footer th:replace="~{fragments/footer :: footer}"></footer>
         <!-- End of Footer -->
     </div>
     <!-- End of Content Wrapper -->
@@ -75,24 +75,10 @@
 </a>
 
 <!-- Logout Modal-->
-<div th:replace="fragments/logout :: logout"></div>
+<div th:replace="~{fragments/logout :: logout}"></div>
 
-<!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
-
-<!-- Page level plugins -->
-<script src="vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-<!-- Page level custom scripts -->
-<script src="js/demo/datatables-demo.js"></script>
+<!-- Incluir los scripts comunes -->
+    <div th:insert="~{fragments/scripts :: scriptsFragment}"></div>
 
 </body>
 
