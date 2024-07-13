@@ -10,4 +10,9 @@ public class UsuarioWebController {
     public String listarUsuarios() {
         return "/usuarios/listarUsuarios";
     }
+
+    @GetMapping("/crearUsuario")
+    public String crearUsuario() {
+        return "/usuarios/crearUsuario";
+    }
 }

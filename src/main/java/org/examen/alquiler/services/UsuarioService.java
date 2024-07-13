@@ -6,26 +6,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioService {
      @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public List<Usuario> listarUsuarios() {
+    public List<Usuario> getUsuarios() {
         return usuarioRepository.findAll();
     }
 
-    public Usuario obtenerUsuarioPorId(Long id) {
-        return usuarioRepository.findById(id).orElse(null);
+    public Optional<Usuario> getUsuarioPorId(Long id) {
+        return usuarioRepository.findById(id);
     }
 
-    public Usuario guardarUsuario(Usuario usuario) {
+    public void guardarUsuario(Usuario usuario) {
         // Aquí podría ir lógica de validación u otras operaciones antes de guardar
-        return usuarioRepository.save(usuario);
+        usuarioRepository.save(usuario);
     }
 
-    public void eliminarUsuario(Long id) {
+    public void deleteUsuario(Long id) {
         usuarioRepository.deleteById(id);
     }
 }
