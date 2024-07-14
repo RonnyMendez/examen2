@@ -25,4 +25,14 @@ public class WebController {
     public String crearCliente() {
         return "/clientes/crearCliente";
     }
+
+    @GetMapping("/listarGarajes")
+    public String listarGarajes() {
+        return "/garajes/listarGarajes";
+    }
+
+    @GetMapping("/crearGaraje")
+    public String crearGaraje() {
+        return "/garajes/crearGaraje";
+    }
 }

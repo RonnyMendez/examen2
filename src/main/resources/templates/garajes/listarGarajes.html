@@ -2,9 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 
-    <head th:insert="~{fragments/head :: headerFragment (pageTitle='Clientes')}">
-        <!-- other elements you want to reference in your layout -->
-    </head>
+<head th:insert="~{fragments/head :: headerFragment (pageTitle='Garajes')}">
+    <!-- other elements you want to reference in your layout -->
+</head>
 
 
 <body id="page-top">
@@ -28,14 +28,14 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Clientes</h1>
+                <h1 class="h3 mb-2 text-gray-800">Garajes</h1>
 
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                        <h6 class="m-0 font-weight-bold text-primary">Clientes Registrados</h6>
-                        <button type="button" class="btn btn-primary" id="createButton" onclick="window.location.href='/crearCliente'">Crear</button>
+                        <h6 class="m-0 font-weight-bold text-primary">Garajes Registrados</h6>
+                        <button type="button" class="btn btn-primary" id="createButton" onclick="window.location.href='/crearGaraje'">Crear</button>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -45,13 +45,11 @@
                                     <th>Codigo</th>
                                     <th>Nombre</th>
                                     <th>Direccion</th>
-                                    <th>Telefono</th>
-                                    <th>DNI</th>
                                     <th>Acciones</th>
                                 </tr>
                                 </thead>
-
                                 <tbody>
+
                                 </tbody>
                             </table>
                         </div>
@@ -59,23 +57,19 @@
                 </div>
             </div>
 
-            <!-- Modal de Edición de Cliente -->
-            <div class="modal fade" id="editarClienteModal" tabindex="-1" role="dialog" aria-labelledby="editarClienteModalLabel" aria-hidden="true">
+            <!-- Modal de Edición de Garaje -->
+            <div class="modal fade" id="editarGarajeModal" tabindex="-1" role="dialog" aria-labelledby="editarGarajeModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="editarClienteModalLabel">Editar Cliente</h5>
+                            <h5 class="modal-title" id="editarGarajeModalLabel">Editar Garaje</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form id="formEditarCliente">
-                                <input type="hidden" id="clienteCodigo" name="clienteCodigo">
-                                <div class="form-group">
-                                    <label for="dni">DNI</label>
-                                    <input type="text" class="form-control" id="dni" name="dni" required>
-                                </div>
+                            <form id="formEditarGaraje">
+                                <input type="hidden" id="garajeId" name="garajeId">
                                 <div class="form-group">
                                     <label for="nombre">Nombre</label>
                                     <input type="text" class="form-control" id="nombre" name="nombre" required>
@@ -84,15 +78,11 @@
                                     <label for="direccion">Dirección</label>
                                     <input type="text" class="form-control" id="direccion" name="direccion" required>
                                 </div>
-                                <div class="form-group">
-                                    <label for="telefono">Teléfono</label>
-                                    <input type="text" class="form-control" id="telefono" name="telefono" required>
-                                </div>
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary" onclick="actualizarCliente()">Guardar Cambios</button>
+                            <button type="button" class="btn btn-primary" onclick="actualizarGaraje()">Guardar Cambios</button>
                         </div>
                     </div>
                 </div>
@@ -118,7 +108,7 @@
 <div th:replace="~{fragments/logout :: logout}"></div>
 
 <!-- Incluir los scripts comunes -->
-    <div th:insert="~{fragments/scripts :: scriptsFragment(jsFile='clientes.js')}"></div>
+<div th:insert="~{fragments/scripts :: scriptsFragment(jsFile='garajes.js')}"></div>
 
 </body>
 

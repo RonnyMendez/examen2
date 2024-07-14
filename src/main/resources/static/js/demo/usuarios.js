@@ -42,6 +42,19 @@ function editarUsuario(usuarioId) {
     });
 }
 
+$('#usuarioCreadoModal').on('click', '#crearOtroUsuario, #regresarListaUsuarios', function(event) {
+    if (event.target.id === 'crearOtroUsuario') {
+        // Limpiar el formulario
+        $('#formularioUsuario')[0].reset();
+        // Cerrar el modal
+        $('#usuarioCreadoModal').modal('hide');
+    } else if (event.target.id === 'regresarListaUsuarios') {
+        // Redireccionar a la lista de usuarios
+        window.location.href = '/listarUsuarios';
+    }
+});
+
+
 // Función para enviar la actualización del usuario
 function actualizarUsuario() {
     var formData = {

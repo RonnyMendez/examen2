@@ -32,7 +32,6 @@ $(document).ready(function() {
             telefono: $('#telefono').val()
         };
 
-        alert("DNI: "+formData.dni);
         $.ajax({
             url: '/api/clientes',
             type: 'POST',
@@ -49,17 +48,18 @@ $(document).ready(function() {
         });
     });
 });
-    $('#clienteCreadoModal').on('click', '#crearOtroCliente', function() {
+$('#clienteCreadoModal').on('click', '#crearOtroCliente, #regresarListaClientes', function(event) {
+    if (event.target.id === 'crearOtroCliente') {
         // Limpiar el formulario
         $('#formularioCliente')[0].reset();
         // Cerrar el modal
         $('#clienteCreadoModal').modal('hide');
-    });
-
-    $('#clienteCreadoModal').on('click', '#regresarListaClientes', function() {
+    } else if (event.target.id === 'regresarListaClientes') {
         // Redireccionar a la lista de clientes
         window.location.href = '/listarClientes';
-    });
+    }
+});
+
 
 function editarCliente(clienteCodigo) {
     $.ajax({
