@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 
-    <head th:insert="~{fragments/head :: headerFragment (pageTitle='Usuarios')}">
+    <head th:insert="~{fragments/head :: headerFragment (pageTitle='Clientes')}">
         <!-- other elements you want to reference in your layout -->
     </head>
 
@@ -28,25 +28,25 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+                <h1 class="h3 mb-2 text-gray-800">Clientes</h1>
 
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3 d-flex justify-content-between align-items-center">
                         <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-                         <button type="button" class="btn btn-primary" id="createButton" onclick="window.location.href='/crearUsuario'">Crear</button>
+                        <button type="button" class="btn btn-primary" id="createButton" onclick="window.location.href='/crearCliente'">Crear</button>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>Codigo</th>
                                     <th>Nombre</th>
-                                    <th>Usuario</th>
-                                    <th>Email</th>
-                                    <th>Rol</th>
+                                    <th>Direccion</th>
+                                    <th>Telefono</th>
+                                    <th>DNI</th>
                                     <th>Acciones</th>
                                 </tr>
                                 </thead>
@@ -60,47 +60,39 @@
             </div>
 
             <!-- Modal de Edición de Usuario -->
-            <div class="modal fade" id="editarUsuarioModal" tabindex="-1" role="dialog" aria-labelledby="editarUsuarioModalLabel" aria-hidden="true">
+            <div class="modal fade" id="editarClienteModal" tabindex="-1" role="dialog" aria-labelledby="editarClienteModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="editarUsuarioModalLabel">Editar Usuario</h5>
+                            <h5 class="modal-title" id="editarClienteModalLabel">Editar Cliente</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form id="formEditarUsuario">
-                                <input type="hidden" id="usuarioId" name="usuarioId">
+                            <form id="formEditarCliente">
+                                <input type="hidden" id="clienteCodigo" name="clienteCodigo">
+                                <div class="form-group">
+                                    <label for="dni">DNI</label>
+                                    <input type="text" class="form-control" id="dni" name="dni" required>
+                                </div>
                                 <div class="form-group">
                                     <label for="nombre">Nombre</label>
                                     <input type="text" class="form-control" id="nombre" name="nombre" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="usuario">Usuario</label>
-                                    <input type="text" class="form-control" id="usuario" name="usuario" required>
+                                    <label for="direccion">Dirección</label>
+                                    <input type="text" class="form-control" id="direccion" name="direccion" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">Nueva Contraseña</label>
-                                    <input type="password" class="form-control" id="password" name="password">
-                                    <small id="passwordHelp" class="form-text text-muted">Deja este campo vacío si no deseas cambiar la contraseña.</small>
-                                </div>
-                                <div class="form-group">
-                                    <label for="rol">Rol</label>
-                                    <select class="form-control" id="rol" name="rol" required>
-                                        <option value="admin">Admin</option>
-                                        <option value="user">User</option>
-                                    </select>
+                                    <label for="telefono">Teléfono</label>
+                                    <input type="text" class="form-control" id="telefono" name="telefono" required>
                                 </div>
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary" onclick="actualizarUsuario()">Guardar Cambios</button>
+                            <button type="button" class="btn btn-primary" onclick="actualizarCliente()">Guardar Cambios</button>
                         </div>
                     </div>
                 </div>
@@ -126,7 +118,7 @@
 <div th:replace="~{fragments/logout :: logout}"></div>
 
 <!-- Incluir los scripts comunes -->
-    <div th:insert="~{fragments/scripts :: scriptsFragment(jsFile='usuarios.js')}"></div>
+    <div th:insert="~{fragments/scripts :: scriptsFragment(jsFile='clientes.js')}"></div>
 
 </body>
 

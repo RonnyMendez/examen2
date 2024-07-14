@@ -28,7 +28,7 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Crear usuario</h1>
+                <h1 class="h3 mb-2 text-gray-800">Crear Cliente</h1>
 
                 <!-- Area Chart -->
                 <div class="col-xl-12 col-lg-7">
@@ -39,31 +39,22 @@
                         </div>
                         <!-- Card Body -->
                         <div class="card-body">
-                            <form id="formularioUsuario" method="post">
+                            <form id="formularioCliente" method="post">
                                 <div class="form-group">
-                                    <label for="usuario">Usuario</label>
-                                    <input type="text" class="form-control" id="usuario" placeholder="Enter usuario" required>
+                                    <label for="dni">DNI</label>
+                                    <input type="text" class="form-control" id="dni" name="dni" placeholder="Enter DNI" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Email address</label>
-                                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
-                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Enter nombre" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" placeholder="Password" required>
+                                    <label for="direccion">Dirección</label>
+                                    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Enter dirección" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="nombre">Full Name</label>
-                                    <input type="text" class="form-control" id="nombre" placeholder="Enter full name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="rol">Role</label>
-                                    <select class="form-control" id="rol" required>
-                                        <option value="">Select Role</option>
-                                        <option value="admin">Admin</option>
-                                        <option value="user">User</option>
-                                    </select>
+                                    <label for="telefono">Teléfono</label>
+                                    <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Enter teléfono" required>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
@@ -75,20 +66,21 @@
             </div>
             <!-- /.container-fluid -->
             <!-- Modal de usuario creado -->
-            <div class="modal fade" id="usuarioCreadoModal" tabindex="-1" role="dialog" aria-labelledby="usuarioCreadoModalLabel" aria-hidden="true">
+            <div class="modal fade" id="clienteCreadoModal" tabindex="-1" role="dialog" aria-labelledby="clienteCreadoModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="usuarioCreadoModalLabel">Usuario Creado</h5>
+                            <h5 class="modal-title" id="clienteCreadoModalLabel">Cliente Creado</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            ¡El usuario ha sido creado exitosamente!
+                            ¡El cliente ha sido creado exitosamente!
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary" id="crearOtroCliente">Crear Otro Cliente</button>
+                            <button type="button" class="btn btn-secondary" id="regresarListaClientes">Regresar a Lista de Clientes</button>
                         </div>
                     </div>
                 </div>
@@ -113,7 +105,7 @@
 <div th:replace="~{fragments/logout :: logout}"></div>
 
 <!-- Incluir los scripts comunes -->
-<div th:insert="~{fragments/scripts :: scriptsFragment(jsFile='usuarios.js')}"></div>
+<div th:insert="~{fragments/scripts :: scriptsFragment(jsFile='clientes.js')}"></div>
 
 </body>
 
