@@ -22,13 +22,13 @@ VALUES ('Almacen Santa', 'Av. Santa 1152'),
        ('Almacen America', 'Av. America Norte 1257'),
        ('Almacen California', 'Los Granados 563');
 
-INSERT INTO automoviles (matricula, modelo, color, marca, garaje_id)
-VALUES
-    ('ABC123', 'Sedan', 'Rojo', 'Toyota', 1),
-    ('XYZ789', 'SUV', 'Negro', 'Ford', 2),
-    ('DEF456', 'Hatchback', 'Azul', 'Honda', 1),
-    ('GHI789', 'Camioneta', 'Blanco', 'Chevrolet', 3),
-    ('JKL321', 'Convertible', 'Plateado', 'BMW', 2);
+INSERT INTO automoviles (matricula, modelo, color, marca, estado, galones, garaje_id)
+VALUES ('ABC123', 'Modelo X', 'Rojo', 'Marca A', 'DISPONIBLE', 10, 1),
+       ('DEF456', 'Modelo Y', 'Azul', 'Marca B', 'DISPONIBLE', 15, 1),
+       ('GHI789', 'Modelo Z', 'Verde', 'Marca C', 'RESERVADO', 5, 2),
+       ('JKL012', 'Modelo W', 'Blanco', 'Marca D', 'DISPONIBLE', 20, 3),
+       ('MNO345', 'Modelo V', 'Negro', 'Marca E', 'RESERVADO', 8, 2);
+
 
 select * from automoviles;
 select * from clientes;

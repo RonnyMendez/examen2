@@ -3,6 +3,7 @@ package org.examen.alquiler.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
+
 @Data
 @Entity
 @Table(name = "automoviles")
@@ -23,6 +24,12 @@ public class Automovil {
 
     @Column(name = "marca", nullable = false)
     private String marca;
+
+    @Column(name = "estado")
+    private String estado;
+
+    @Column(name = "galones")
+    private Integer galones;
 
     @ManyToOne
     @JoinColumn(name = "garaje_id", nullable = false)

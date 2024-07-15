@@ -10,6 +10,8 @@ $(document).ready(function() {
             { "data": "modelo" },
             { "data": "color" },
             { "data": "marca" },
+            { "data": "estado" },
+            { "data": "galones" },
             { "data": "garaje.nombre" }, // Asumiendo que quieres mostrar el nombre del garaje
             {
                 "data": null,
@@ -47,6 +49,8 @@ $('#formularioAutomovil').submit(function(e) {
             modelo: $('#modelo').val(),
             color: $('#color').val(),
             marca: $('#marca').val(),
+            galones: $('#galones').val(),
+            estado: $('#estado').val(),
             garaje: {
                 garajeId: $('#garaje').val()
             }
@@ -90,6 +94,7 @@ $('#formularioAutomovil').submit(function(e) {
             $('#modelo').val(automovil.modelo);
             $('#color').val(automovil.color);
             $('#marca').val(automovil.marca);
+            $('#galones').val(automovil.galones);
             $('#garaje').val(automovil.garaje.garajeId);
 
             $('#editarAutomovilModal').modal('show'); // Mostrar modal de edición
@@ -108,6 +113,7 @@ function actualizarAutomovil() {
         modelo: $('#modelo').val(),
         color: $('#color').val(),
         marca: $('#marca').val(),
+        galones: $('#galones').val(),
         garaje: {
             garajeId: $('#garaje').val()
         }
