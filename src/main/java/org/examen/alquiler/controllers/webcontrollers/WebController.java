@@ -35,4 +35,14 @@ public class WebController {
     public String crearGaraje() {
         return "/garajes/crearGaraje";
     }
+
+    @GetMapping("/listarAutomoviles")
+    public String listarAutomoviles() {
+        return "/automoviles/listarAutomoviles";
+    }
+
+    @GetMapping("/crearAutomovil")
+    public String crearAutomovil() {
+        return "/automoviles/crearAutomovil";
+    }
 }
