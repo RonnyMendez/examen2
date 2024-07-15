@@ -2,9 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 
-    <head th:insert="~{fragments/head :: headerFragment (pageTitle='Automoviles')}">
-        <!-- other elements you want to reference in your layout -->
-    </head>
+<head th:insert="~{fragments/head :: headerFragment (pageTitle='Automoviles')}">
+    <!-- other elements you want to reference in your layout -->
+</head>
 
 
 <body id="page-top">
@@ -30,12 +30,13 @@
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">Automoviles</h1>
 
-
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                        <h6 class="m-0 font-weight-bold text-primary">Clientes Registrados</h6>
-                        <button type="button" class="btn btn-primary" id="createButton" onclick="window.location.href='/crearCliente'">Crear</button>
+                        <h6 class="m-0 font-weight-bold text-primary">Automoviles Registrados</h6>
+                        <button type="button" class="btn btn-primary" id="createButton"
+                                onclick="window.location.href='/crearAutomovil'">Crear
+                        </button>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -59,40 +60,49 @@
                 </div>
             </div>
 
-            <!-- Modal de Edición de Cliente -->
-            <div class="modal fade" id="editarClienteModal" tabindex="-1" role="dialog" aria-labelledby="editarClienteModalLabel" aria-hidden="true">
+            <!-- Modal de Edición de Automóvil -->
+            <div class="modal fade" id="editarAutomovilModal" tabindex="-1" role="dialog"
+                 aria-labelledby="editarAutomovilModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="editarClienteModalLabel">Editar Cliente</h5>
+                            <h5 class="modal-title" id="editarAutomovilModalLabel">Editar Automóvil</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form id="formEditarCliente">
-                                <input type="hidden" id="clienteCodigo" name="clienteCodigo">
+                            <form id="formEditarAutomovil">
+                                <input type="hidden" id="automovilId" name="automovilId">
                                 <div class="form-group">
-                                    <label for="dni">DNI</label>
-                                    <input type="text" class="form-control" id="dni" name="dni" required>
+                                    <label for="matricula">Matrícula</label>
+                                    <input type="text" class="form-control" id="matricula" name="matricula" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="nombre">Nombre</label>
-                                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                    <label for="modelo">Modelo</label>
+                                    <input type="text" class="form-control" id="modelo" name="modelo" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="direccion">Dirección</label>
-                                    <input type="text" class="form-control" id="direccion" name="direccion" required>
+                                    <label for="color">Color</label>
+                                    <input type="text" class="form-control" id="color" name="color" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="telefono">Teléfono</label>
-                                    <input type="text" class="form-control" id="telefono" name="telefono" required>
+                                    <label for="marca">Marca</label>
+                                    <input type="text" class="form-control" id="marca" name="marca" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="garaje">Garaje</label>
+                                    <select class="form-control" id="garaje" name="garaje" required>
+                                        <!-- Los valores de los garajes deben ser añadidos dinámicamente -->
+                                    </select>
                                 </div>
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary" onclick="actualizarCliente()">Guardar Cambios</button>
+                            <button type="button" class="btn btn-primary" onclick="actualizarAutomovil()">Guardar
+                                Cambios
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -118,7 +128,7 @@
 <div th:replace="~{fragments/logout :: logout}"></div>
 
 <!-- Incluir los scripts comunes -->
-    <div th:insert="~{fragments/scripts :: scriptsFragment(jsFile='automoviles.js')}"></div>
+<div th:insert="~{fragments/scripts :: scriptsFragment(jsFile='automoviles.js')}"></div>
 
 </body>
 

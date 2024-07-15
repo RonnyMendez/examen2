@@ -100,17 +100,21 @@ function actualizarGaraje() {
     });
 }
 
-function eliminarGaraje(garajeId) {
+function eliminarGaraje(id) {
     $.ajax({
-        url: '/api/garajes/delete/' + garajeId,
+        url: '/api/garajes/delete/' + id,
         type: 'DELETE',
         success: function(data) {
             // Recargar la tabla después de eliminar
             $('#dataTable').DataTable().ajax.reload(); // Opcionalmente, puedes usar la variable 'table' si está definida globalmente
         },
         error: function(jqXHR, textStatus, errorThrown) {
-            console.log('Error al eliminar garaje:', textStatus);
-            // Manejar el error según sea necesario
+            if (jqXHR.status === 500) { // Supongamos que el error 409 Conflict es el código de respuesta para garajes con automóviles asociados
+                $('#errorModal').modal('show'); // Mostrar modal de error
+            } else {
+                console.log('Error al eliminar garaje:', textStatus);
+                // Manejar otros errores según sea necesario
+            }
         }
     });
 }

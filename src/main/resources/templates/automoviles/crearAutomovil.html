@@ -1,0 +1,127 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<head th:insert="~{fragments/head :: headerFragment (pageTitle='Crear Automovil')}">
+    <!-- other elements you want to reference in your layout -->
+</head>
+
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <ul th:replace="~{fragments/sidebar :: sidebar}"></ul>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <ul th:replace="~{fragments/navbar :: navbar}"></ul>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <h1 class="h3 mb-2 text-gray-800">Crear Automovil</h1>
+
+                <!-- Area Chart -->
+                <div class="col-xl-12 col-lg-7">
+                    <div class="card shadow mb-4">
+                        <!-- Card Header - Dropdown -->
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-primary">Ingresa los Datos</h6>
+                        </div>
+                        <!-- Card Body -->
+                        <div class="card-body">
+                            <form id="formularioAutomovil" method="post">
+                                <div class="form-group">
+                                    <label for="matricula">Matrícula</label>
+                                    <input type="text" class="form-control" id="matricula" name="matricula"
+                                           placeholder="Enter matrícula" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="modelo">Modelo</label>
+                                    <input type="text" class="form-control" id="modelo" name="modelo"
+                                           placeholder="Enter modelo" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="color">Color</label>
+                                    <input type="text" class="form-control" id="color" name="color"
+                                           placeholder="Enter color" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="marca">Marca</label>
+                                    <input type="text" class="form-control" id="marca" name="marca"
+                                           placeholder="Enter marca" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="garaje">Garaje</label>
+                                    <select class="form-control" id="garaje" name="garaje" required>
+                                        <option value="">Seleccione un garaje</option>
+                                        <!-- Los valores de los garajes deben ser añadidos dinámicamente -->
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.container-fluid -->
+            <!-- Modal de automovil creado -->
+            <div class="modal fade" id="automovilCreadoModal" tabindex="-1" role="dialog"
+                 aria-labelledby="automovilCreadoModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="automovilCreadoModalLabel">Automóvil Creado</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            ¡El automóvil ha sido creado exitosamente!
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="crearOtroAutomovil">Crear Otro Automóvil
+                            </button>
+                            <button type="button" class="btn btn-secondary" id="regresarListaAutomoviles">Regresar a
+                                Lista de Automóviles
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Main Content -->
+        <!-- Footer -->
+        <footer th:replace="~{fragments/footer :: footer}"></footer>
+        <!-- End of Footer -->
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div th:replace="~{fragments/logout :: logout}"></div>
+
+<!-- Incluir los scripts comunes -->
+<div th:insert="~{fragments/scripts :: scriptsFragment(jsFile='automoviles.js')}"></div>
+
+</body>
+
+</html>
