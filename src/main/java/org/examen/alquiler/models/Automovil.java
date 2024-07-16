@@ -1,6 +1,8 @@
 package org.examen.alquiler.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -39,7 +41,9 @@ public class Automovil {
     private Garaje garaje;
 
     @ManyToMany(mappedBy = "automoviles", fetch = FetchType.EAGER)
-    @JsonBackReference
+    @JsonIgnore
+    //@JsonBackReference
+    //@JsonIgnoreProperties("reservas")
     private List<Reserva> reservas;
 
 }

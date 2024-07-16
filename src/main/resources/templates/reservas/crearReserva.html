@@ -44,7 +44,7 @@
                                     <label for="cliente">Cliente</label>
                                     <select class="form-control" id="cliente" name="cliente" required>
                                         <option value="">Seleccione un cliente</option>
-                                        <!-- Los valores de los clientes deben ser añadidos dinámicamente -->
+                                        <!-- Los valores de los clientes se añadirán dinámicamente con JavaScript -->
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="precioTotal">Precio Total</label>
-                                    <input type="number" class="form-control" id="precioTotal" name="precioTotal" required>
+                                    <input type="number" class="form-control" id="precioTotal" name="precioTotal" required step="0.01">
                                 </div>
 
                                 <!-- Campo oculto para el estado de entrega -->
@@ -65,10 +65,10 @@
 
                                 <!-- Sección para seleccionar automóviles -->
                                 <div class="form-group">
-                                    <label for="automovilSelect">Automóvil</label>
+                                    <label for="automovilSelect">Automóviles</label>
                                     <select class="form-control" id="automovilSelect">
-                                        <option value="">Seleccione un automóvil</option>
-                                        <!-- Los valores de los automóviles deben ser añadidos dinámicamente -->
+                                        <option value="">Seleccione automóviles</option>
+                                        <!-- Los valores de los automóviles se añadirán dinámicamente con JavaScript -->
                                     </select>
                                 </div>
                                 <button type="button" id="add-automovil" class="btn btn-secondary">Agregar Automóvil</button>

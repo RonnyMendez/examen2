@@ -38,7 +38,13 @@ public class ReservaController {
         return reservaService.getReservas();
     }
 
-    @PostMapping
+    @PostMapping(consumes = "application/json;charset=UTF-8")
+    public ResponseEntity<Void> guardarReserva(@RequestBody Reserva reserva) {
+        reservaService.guardarReserva(reserva);
+        return ResponseEntity.ok().build();
+    }
+
+    /*@PostMapping
     public ResponseEntity<?> crearReserva(@RequestBody ReservaDTO reservaDTO) {
         // Convertir los IDs de automóviles en objetos Automovil
         List<Automovil> automoviles = reservaDTO.getAutomoviles().stream()
@@ -69,5 +75,5 @@ public class ReservaController {
         reservaService.guardarReserva(reserva);
 
         return ResponseEntity.ok().build();
-    }
+    }*/
 }

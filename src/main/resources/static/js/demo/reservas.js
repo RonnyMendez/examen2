@@ -46,7 +46,7 @@ $(document).ready(function() {
     $('#add-automovil').click(function() {
         var automovilId = $('#automovilSelect').val();
         var automovilTexto = $('#automovilSelect option:selected').text();
-        if (automovilId) {
+        if (automovilId && !automovilesSeleccionados.includes(automovilId)) {
             automovilesSeleccionados.push(automovilId);
             $('#automoviles-list').append('<li data-id="' + automovilId + '">' + automovilTexto +
                 ' <button type="button" class="btn btn-danger btn-sm remove-automovil">Quitar</button></li>');
@@ -60,10 +60,7 @@ $(document).ready(function() {
         $(this).parent().remove();
     });
 
-    // Aquí puedes cargar dinámicamente los valores de los clientes y automóviles
-    // Por ejemplo, puedes hacer una llamada AJAX para obtener los datos y luego llenar los selects
-
-    // Ejemplo de cómo cargar los valores de los clientes
+    // Cargar dinámicamente los valores de los clientes
     $.ajax({
         url: '/api/clientes', // La URL de tu API para obtener los clientes
         method: 'GET',
@@ -72,10 +69,13 @@ $(document).ready(function() {
             data.forEach(function(cliente) {
                 clienteSelect.append(new Option(cliente.nombre, cliente.clienteCodigo));
             });
+        },
+        error: function() {
+            alert('Error al cargar clientes');
         }
     });
 
-    // Ejemplo de cómo cargar los valores de los automóviles
+    // Cargar dinámicamente los valores de los automóviles
     $.ajax({
         url: '/api/automoviles', // La URL de tu API para obtener los automóviles
         method: 'GET',
@@ -84,6 +84,9 @@ $(document).ready(function() {
             data.forEach(function(automovil) {
                 automovilSelect.append(new Option(automovil.matricula + ' - ' + automovil.modelo, automovil.automovilId));
             });
+        },
+        error: function() {
+            alert('Error al cargar automóviles');
         }
     });
 
@@ -92,14 +95,20 @@ $(document).ready(function() {
         event.preventDefault();
 
         var reservaData = {
-            clienteId: $('#cliente').val(),
+            cliente: {
+                clienteCodigo: $('#cliente').val()
+            },
             fechaInicio: $('#fechaInicio').val(),
             fechaFinal: $('#fechaFinal').val(),
-            precioTotal: $('#precioTotal').val(),
-            entregado: $('#entregado').val() === "true",  // Incluye el estado de entrega en el JSON como booleano
-            automoviles: automovilesSeleccionados
+            precioTotal: parseFloat($('#precioTotal').val()),
+            entregado: $('#entregado').val() === "true",
+            automoviles: automovilesSeleccionados.map(id => {
+                return {
+                    automovilId: parseInt(id)
+                };
+            })
         };
-        console.log(JSON.stringify(reservaData))
+
         $.ajax({
             url: '/api/reservas', // La URL de tu API para guardar la reserva
             method: 'POST',
@@ -107,7 +116,10 @@ $(document).ready(function() {
             data: JSON.stringify(reservaData),
             success: function(response) {
                 alert('Reserva creada exitosamente');
-                // Aquí puedes añadir lógica adicional como limpiar el formulario o redireccionar
+                // Limpiar formulario y lista de automóviles seleccionados si es necesario
+                $('#formularioReserva')[0].reset();
+                $('#automoviles-list').empty();
+                automovilesSeleccionados = [];
             },
             error: function(error) {
                 alert('Error al crear la reserva');

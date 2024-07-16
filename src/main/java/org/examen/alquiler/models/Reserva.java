@@ -1,5 +1,6 @@
 package org.examen.alquiler.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -37,7 +38,7 @@ public class Reserva {
             joinColumns = @JoinColumn(name = "reserva_id"),
             inverseJoinColumns = @JoinColumn(name = "automovil_id")
     )
-    @JsonManagedReference
+    @JsonIgnore
     private List<Automovil> automoviles;
 
     // Constructor, getters, setters y otros métodos según necesidad
