@@ -10,12 +10,18 @@ $(document).ready(function() {
             { "data": "modelo" },
             { "data": "color" },
             { "data": "marca" },
+            {
+                "data": "precioPorDia",
+                "render": function(data, type, row) {
+                    return 'S/. ' + parseFloat(data).toFixed(2);
+                }
+            },
             { "data": "estado" },
             { "data": "galones" },
-            { "data": "garaje.nombre" }, // Asumiendo que quieres mostrar el nombre del garaje
+            { "data": "garaje.nombre" },
             {
                 "data": null,
-                "render": function(data, type, row)  {
+                "render": function(data, type, row) {
                     return '<a href="#" class="btn btn-primary" onclick="editarAutomovil(' + data.automovilId + ')">Editar</a> ' +
                         '<a href="#" class="btn btn-danger btn-eliminar" onclick="eliminarAutomovil(' + data.automovilId + ')">Eliminar</a>';
                 }
@@ -49,6 +55,7 @@ $('#formularioAutomovil').submit(function(e) {
             modelo: $('#modelo').val(),
             color: $('#color').val(),
             marca: $('#marca').val(),
+            precioPorDia: $('#precioPorDia').val(),
             galones: $('#galones').val(),
             estado: $('#estado').val(),
             garaje: {
@@ -94,6 +101,7 @@ $('#formularioAutomovil').submit(function(e) {
             $('#modelo').val(automovil.modelo);
             $('#color').val(automovil.color);
             $('#marca').val(automovil.marca);
+            $('#precioPorDia').val(automovil.precioPorDia);
             $('#galones').val(automovil.galones);
             $('#garaje').val(automovil.garaje.garajeId);
 
@@ -113,6 +121,7 @@ function actualizarAutomovil() {
         modelo: $('#modelo').val(),
         color: $('#color').val(),
         marca: $('#marca').val(),
+        precioPorDia: $('#precioPorDia').val(),
         galones: $('#galones').val(),
         garaje: {
             garajeId: $('#garaje').val()

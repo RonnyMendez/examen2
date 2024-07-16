@@ -53,6 +53,7 @@ public class AutomovilController {
             updatedAutomovil.setColor(automovil.getColor());
             updatedAutomovil.setMarca(automovil.getMarca());
             updatedAutomovil.setGalones(automovil.getGalones());
+            updatedAutomovil.setPrecioPorDia(automovil.getPrecioPorDia());
             updatedAutomovil.setGaraje(automovil.getGaraje()); // Asegúrate de manejar correctamente la relación con Garaje
 
             automovilService.guardarAutomovil(updatedAutomovil);

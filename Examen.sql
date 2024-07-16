@@ -22,12 +22,12 @@ VALUES ('Almacen Santa', 'Av. Santa 1152'),
        ('Almacen America', 'Av. America Norte 1257'),
        ('Almacen California', 'Los Granados 563');
 
-INSERT INTO automoviles (matricula, modelo, color, marca, estado, galones, garaje_id)
-VALUES ('ABC123', 'Modelo X', 'Rojo', 'Marca A', 'DISPONIBLE', 10, 1),
-       ('DEF456', 'Modelo Y', 'Azul', 'Marca B', 'DISPONIBLE', 15, 1),
-       ('GHI789', 'Modelo Z', 'Verde', 'Marca C', 'RESERVADO', 5, 2),
-       ('JKL012', 'Modelo W', 'Blanco', 'Marca D', 'DISPONIBLE', 20, 3),
-       ('MNO345', 'Modelo V', 'Negro', 'Marca E', 'RESERVADO', 8, 2);
+INSERT INTO automoviles (matricula, modelo, color, marca, estado, galones,precio_por_dia, garaje_id)
+VALUES ('ABC123', 'Modelo X', 'Rojo', 'Marca A', 'DISPONIBLE', 10,12.0, 1),
+       ('DEF456', 'Modelo Y', 'Azul', 'Marca B', 'DISPONIBLE', 15,15.25, 1),
+       ('GHI789', 'Modelo Z', 'Verde', 'Marca C', 'RESERVADO', 5,16.0, 2),
+       ('JKL012', 'Modelo W', 'Blanco', 'Marca D', 'DISPONIBLE', 20,8.80, 3),
+       ('MNO345', 'Modelo V', 'Negro', 'Marca E', 'RESERVADO', 8,20.50, 2);
 
 INSERT INTO reservas (entregado, fecha_final, fecha_inicio, precio_total, cliente_codigo)
 VALUES

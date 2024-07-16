@@ -40,6 +40,10 @@ public class Automovil {
     @JoinColumn(name = "garaje_id", nullable = false)
     private Garaje garaje;
 
+    @Column(name = "precio_por_dia")
+    private Double precioPorDia;
+
+
     @ManyToMany(mappedBy = "automoviles", fetch = FetchType.EAGER)
     @JsonIgnore
     //@JsonBackReference
