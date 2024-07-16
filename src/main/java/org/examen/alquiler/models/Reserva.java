@@ -1,5 +1,6 @@
 package org.examen.alquiler.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.util.Date;
@@ -12,7 +13,7 @@ public class Reserva {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idReserva;
+    private Long reservaId;
 
     @ManyToOne
     @JoinColumn(name = "cliente_codigo", nullable = false)
@@ -30,12 +31,13 @@ public class Reserva {
     @Column(name = "entregado", nullable = false)
     private boolean entregado;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "reserva_automovil",
             joinColumns = @JoinColumn(name = "reserva_id"),
-            inverseJoinColumns = @JoinColumn(name = "automovil_matricula")
+            inverseJoinColumns = @JoinColumn(name = "automovil_id")
     )
+    @JsonManagedReference
     private List<Automovil> automoviles;
 
     // Constructor, getters, setters y otros métodos según necesidad

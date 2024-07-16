@@ -45,4 +45,14 @@ public class WebController {
     public String crearAutomovil() {
         return "/automoviles/crearAutomovil";
     }
+
+    @GetMapping("/listarReservas")
+    public String listarReservas() {
+        return "/reservas/listarReservas";
+    }
+
+    @GetMapping("/crearReserva")
+    public String crearReserva() {
+        return "/reservas/crearReserva";
+    }
 }

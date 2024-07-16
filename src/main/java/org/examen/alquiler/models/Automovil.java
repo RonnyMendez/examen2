@@ -1,7 +1,10 @@
 package org.examen.alquiler.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
 
 
 @Data
@@ -34,5 +37,9 @@ public class Automovil {
     @ManyToOne
     @JoinColumn(name = "garaje_id", nullable = false)
     private Garaje garaje;
+
+    @ManyToMany(mappedBy = "automoviles", fetch = FetchType.EAGER)
+    @JsonBackReference
+    private List<Reserva> reservas;
 
 }

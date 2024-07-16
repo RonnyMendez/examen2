@@ -1,0 +1,114 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<head th:insert="~{fragments/head :: headerFragment (pageTitle='Crear Reserva')}">
+    <!-- other elements you want to reference in your layout -->
+</head>
+
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <ul th:replace="~{fragments/sidebar :: sidebar}"></ul>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <ul th:replace="~{fragments/navbar :: navbar}"></ul>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <h1 class="h3 mb-2 text-gray-800">Crear Reserva</h1>
+
+                <!-- Area Chart -->
+                <div class="col-xl-12 col-lg-7">
+                    <div class="card shadow mb-4">
+                        <!-- Card Header - Dropdown -->
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-primary">Ingresa los Datos</h6>
+                        </div>
+                        <!-- Card Body -->
+                        <div class="card-body">
+                            <form id="formularioReserva" method="post">
+                                <div class="form-group">
+                                    <label for="cliente">Cliente</label>
+                                    <select class="form-control" id="cliente" name="cliente" required>
+                                        <option value="">Seleccione un cliente</option>
+                                        <!-- Los valores de los clientes deben ser añadidos dinámicamente -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fechaInicio">Fecha de Inicio</label>
+                                    <input type="date" class="form-control" id="fechaInicio" name="fechaInicio" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fechaFinal">Fecha Final</label>
+                                    <input type="date" class="form-control" id="fechaFinal" name="fechaFinal" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="precioTotal">Precio Total</label>
+                                    <input type="number" class="form-control" id="precioTotal" name="precioTotal" required>
+                                </div>
+
+                                <!-- Campo oculto para el estado de entrega -->
+                                <input type="hidden" id="entregado" name="entregado" value="false">
+
+                                <!-- Sección para seleccionar automóviles -->
+                                <div class="form-group">
+                                    <label for="automovilSelect">Automóvil</label>
+                                    <select class="form-control" id="automovilSelect">
+                                        <option value="">Seleccione un automóvil</option>
+                                        <!-- Los valores de los automóviles deben ser añadidos dinámicamente -->
+                                    </select>
+                                </div>
+                                <button type="button" id="add-automovil" class="btn btn-secondary">Agregar Automóvil</button>
+
+                                <!-- Sección para mostrar la lista de automóviles seleccionados -->
+                                <h4>Automóviles Seleccionados</h4>
+                                <ul id="automoviles-list"></ul>
+
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.container-fluid -->
+            <!-- Modal de automovil creado -->
+
+        </div>
+        <!-- End of Main Content -->
+        <!-- Footer -->
+        <footer th:replace="~{fragments/footer :: footer}"></footer>
+        <!-- End of Footer -->
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div th:replace="~{fragments/logout :: logout}"></div>
+
+<!-- Incluir los scripts comunes -->
+<div th:insert="~{fragments/scripts :: scriptsFragment(jsFile='reservas.js')}"></div>
+
+</body>
+
+</html>
