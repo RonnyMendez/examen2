@@ -103,8 +103,7 @@
 <div th:replace="~{fragments/logout :: logout}"></div>
 
 <!-- Incluir los scripts comunes -->
-<div th:insert="~{fragments/scripts :: scriptsFragment(jsFile='/reservas/listarReservas.js')}"></div>
-<script src="../../static/js/demo/reservas/reservasPDF.js"></script>
+<div th:insert="~{fragments/scripts :: scriptsFragment(jsFile='reservas/listarReservas.js')}"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 
 

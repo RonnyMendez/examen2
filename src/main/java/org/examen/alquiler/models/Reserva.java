@@ -3,6 +3,9 @@ package org.examen.alquiler.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.Data;
 import java.util.Date;
 import java.util.List;
@@ -20,12 +23,15 @@ public class Reserva {
     @JoinColumn(name = "cliente_codigo", nullable = false)
     private Cliente cliente;
 
+    @PastOrPresent
     @Column(name = "fecha_inicio", nullable = false)
     private Date fechaInicio;
 
+    @FutureOrPresent
     @Column(name = "fecha_final", nullable = false)
     private Date fechaFinal;
 
+    @PositiveOrZero
     @Column(name = "precio_total", nullable = false)
     private Double precioTotal;
 
