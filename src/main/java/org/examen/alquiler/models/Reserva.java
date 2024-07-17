@@ -23,7 +23,7 @@ public class Reserva {
     @JoinColumn(name = "cliente_codigo", nullable = false)
     private Cliente cliente;
 
-    @PastOrPresent
+    @FutureOrPresent
     @Column(name = "fecha_inicio", nullable = false)
     private Date fechaInicio;
 

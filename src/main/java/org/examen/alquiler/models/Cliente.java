@@ -15,7 +15,7 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long clienteCodigo;
 
-    @Length(min = 8, max = 8)
+    @Length(max = 9)
     @Column(name = "DNI", unique = true)
     private String DNI;
 
