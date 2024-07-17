@@ -1,35 +1,30 @@
 package org.examen.alquiler.controllers;
 
-import org.examen.alquiler.DTO.ReservaDTO;
+
 import org.examen.alquiler.models.Automovil;
-import org.examen.alquiler.models.Cliente;
 import org.examen.alquiler.models.Reserva;
 import org.examen.alquiler.services.AutomovilService;
 import org.examen.alquiler.services.ClienteService;
 import org.examen.alquiler.services.ReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 @RestController
 @RequestMapping(path = "/api/reservas")
 public class ReservaController {
 
     private final ReservaService reservaService;
-    private final AutomovilService automovilService;
-    private final ClienteService clienteService;
+
 
     @Autowired
     public ReservaController(ReservaService reservaService, AutomovilService automovilService, ClienteService clienteService) {
         this.reservaService = reservaService;
-        this.automovilService = automovilService;
-        this.clienteService = clienteService;
     }
 
 
@@ -42,6 +37,11 @@ public class ReservaController {
     public ResponseEntity<Void> guardarReserva(@RequestBody Reserva reserva) {
         reservaService.guardarReserva(reserva);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/{automovilId}")
+    public Optional<Reserva> obtenerReservaPorId(@PathVariable("automovilId") Long reservaId) {
+        return reservaService.getReservaPorId(reservaId);
     }
 
     /*@PostMapping

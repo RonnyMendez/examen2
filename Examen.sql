@@ -29,13 +29,13 @@ VALUES ('ABC123', 'Modelo X', 'Rojo', 'Marca A', 'DISPONIBLE', 10,12.0, 1),
        ('JKL012', 'Modelo W', 'Blanco', 'Marca D', 'DISPONIBLE', 20,8.80, 3),
        ('MNO345', 'Modelo V', 'Negro', 'Marca E', 'RESERVADO', 8,20.50, 2);
 
-INSERT INTO reservas (entregado, fecha_final, fecha_inicio, precio_total, cliente_codigo)
+INSERT INTO reservas (entregado, fecha_final, fecha_inicio, precio_total, cliente_codigo,activo)
 VALUES
-    (true, '2024-08-15', '2024-08-01', 300.00, 1),
-    (false, '2024-09-10', '2024-09-01', 450.00, 2),
-    (true, '2024-07-20', '2024-07-10', 500.00, 3),
-    (false, '2024-10-05', '2024-09-25', 200.00, 4),
-    (true, '2024-11-01', '2024-10-20', 600.00, 5);
+    (true, '2024-08-15', '2024-08-01', 300.00, 1,true),
+    (false, '2024-09-10', '2024-09-01', 450.00, 2,true),
+    (true, '2024-07-20', '2024-07-10', 500.00, 3,true),
+    (false, '2024-10-05', '2024-09-25', 200.00, 4,true),
+    (true, '2024-11-01', '2024-10-20', 600.00, 5,true);
 
 select * from automoviles;
 select * from clientes;

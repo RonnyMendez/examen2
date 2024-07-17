@@ -1,46 +1,4 @@
 $(document).ready(function() {
-    $('#dataTable').DataTable({
-        "ajax": {
-            "url": "/api/reservas",
-            "dataSrc": ""
-        },
-        "columns": [
-            { "data": "reservaId" },
-            { "data": "cliente.nombre" },
-            {
-                "data": "fechaInicio",
-                "render": function(data, type, row) {
-                    var date = new Date(data);
-                    return date.toLocaleDateString();
-                }
-            },
-            {
-                "data": "fechaFinal",
-                "render": function(data, type, row) {
-                    var date = new Date(data);
-                    return date.toLocaleDateString();
-                }
-            },
-            { "data": "precioTotal" },
-            {
-                "data": "entregado",
-                "render": function(data, type, row) {
-                    return data ? "Entregado" : "Sin entregar";
-                }
-            },
-            {
-                "data": null,
-                "render": function(data, type, row) {
-                    return '<a href="#" class="btn btn-primary">Editar</a> ' +
-                        '<a href="#" class="btn btn-danger btn-eliminar">Eliminar</a>';
-                }
-            }
-        ]
-    });
-});
-
-
-$(document).ready(function() {
     var automovilesSeleccionados = [];
 
     // Función para agregar un automóvil a la lista
@@ -56,11 +14,12 @@ $(document).ready(function() {
                 color: selectedOption.data('color'),
                 marca: selectedOption.data('marca'),
                 galones: selectedOption.data('galones'),
-                precioPorDia: selectedOption.data('precio')
+                precioPorDia: parseFloat(selectedOption.data('precio'))
             };
 
             automovilesSeleccionados.push(automovil);
             mostrarAutomovilesSeleccionados();
+            actualizarPrecioTotal();
             $('#automovilSelect').val('');
         }
     });
@@ -68,7 +27,7 @@ $(document).ready(function() {
     // Función para mostrar los automóviles seleccionados en la tabla
     function mostrarAutomovilesSeleccionados() {
         $('#automoviles-list').empty();
-        automovilesSeleccionados.forEach(function(automovil, index) {
+        automovilesSeleccionados.forEach(function(automovil) {
             $('#automoviles-list').append(`
                 <tr data-id="${automovil.automovilId}">
                     <td>${automovil.matricula}</td>
@@ -76,11 +35,17 @@ $(document).ready(function() {
                     <td>${automovil.color}</td>
                     <td>${automovil.marca}</td>
                     <td>${automovil.galones}</td>
-                    <td>S/. ${parseFloat(automovil.precioPorDia).toFixed(2)}</td>
+                    <td>S/. ${automovil.precioPorDia.toFixed(2)}</td>
                     <td><button type="button" class="btn btn-danger btn-sm remove-automovil">Quitar</button></td>
                 </tr>
             `);
         });
+    }
+
+    // Función para actualizar el precio total
+    function actualizarPrecioTotal() {
+        var precioTotal = automovilesSeleccionados.reduce((total, automovil) => total + automovil.precioPorDia, 0);
+        $('#precioTotal').text(`S/. ${precioTotal.toFixed(2)}`);
     }
 
     // Función para quitar un automóvil de la lista
@@ -88,6 +53,7 @@ $(document).ready(function() {
         var automovilId = $(this).closest('tr').data('id').toString();
         automovilesSeleccionados = automovilesSeleccionados.filter(a => a.automovilId !== automovilId);
         mostrarAutomovilesSeleccionados();
+        actualizarPrecioTotal();
     });
 
     // Cargar dinámicamente los valores de los clientes
@@ -134,6 +100,7 @@ $(document).ready(function() {
         }
     });
 
+
     // Manejar el envío del formulario
     $('#formularioReserva').submit(function(event) {
         event.preventDefault();
@@ -144,13 +111,9 @@ $(document).ready(function() {
             },
             fechaInicio: $('#fechaInicio').val(),
             fechaFinal: $('#fechaFinal').val(),
-            precioTotal: parseFloat($('#precioTotal').val()),
+            precioTotal: parseFloat($('#precioTotal').text().replace('S/. ', '')),
             entregado: $('#entregado').val() === "true",
-            automoviles: automovilesSeleccionados.map(id => {
-                return {
-                    automovilId: parseInt(id)
-                };
-            })
+            automoviles: automovilesSeleccionados.map(a => ({ automovilId: parseInt(a.automovilId) }))
         };
 
         $.ajax({
@@ -164,6 +127,7 @@ $(document).ready(function() {
                 $('#formularioReserva')[0].reset();
                 $('#automoviles-list').empty();
                 automovilesSeleccionados = [];
+                actualizarPrecioTotal();
             },
             error: function(error) {
                 alert('Error al crear la reserva');

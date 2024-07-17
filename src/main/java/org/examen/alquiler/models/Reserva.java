@@ -32,6 +32,9 @@ public class Reserva {
     @Column(name = "entregado", nullable = false)
     private boolean entregado;
 
+    @Column(name = "activo", nullable = false)
+    private boolean activo = true;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "reserva_automovil",
